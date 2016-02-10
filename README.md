@@ -7,7 +7,7 @@ nginx docker image based on the [official nginx image](https://hub.docker.com/_/
 
 There are currently two snippets available:
 
-* [`snippets/letsencryptauth.conf`](letsencryptauth.conf]: Provide the ACME webroot via HTTP (port 80). Redirect all other traffic to HTTPS pendant.
+* [`snippets/letsencryptauth.conf`](letsencryptauth.conf): Provide the ACME webroot via HTTP (port 80). Redirect all other traffic to HTTPS pendant.
 * [`snippets/sslconfig.conf`](sslconfig.conf): SSL config directives for enabling an A+ rating on Qualys SSL Server Test.
 
 For using the configuration snippets, you can just include in your `nginx.conf`. A complete example config looks like that:
