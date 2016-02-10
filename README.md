@@ -1,7 +1,7 @@
 # docker-nginx-letsencrypt
 nginx docker image based on the [official nginx image](https://hub.docker.com/_/nginx/) with built-in config snippets for [ACME webroot authentication](https://en.wikipedia.org/wiki/Automated_Certificate_Management_Environment) support (for [Let’s Encrypt)](https://letsencrypt.org/) and zero-downtime auto-reload on configuration or certificate changes. Furthermore it comes with a config snippet for SSL/TLS which achieves an A+ rating at [Qualys SSL Server Test](https://www.ssllabs.com/ssltest/).  This image was created for use with [letsencrypt-manager](https://github.com/bringnow/docker-letsencrypt-manager).
 
-![SSL Server Test Rating]: ./sslservertest.png "Qualys SSL Server Test Rating"
+![SSL Server Test Rating](./sslservertest.png?raw=true "Qualys SSL Server Test Rating")
 
 ## Usage
 
