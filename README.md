@@ -10,6 +10,13 @@ There are currently two snippets available:
 * [`snippets/letsencryptauth.conf`](letsencryptauth.conf): Provide the ACME webroot via HTTP (port 80). Redirect all other traffic to HTTPS pendant.
 * [`snippets/sslconfig.conf`](sslconfig.conf): SSL config directives for enabling an A+ rating on Qualys SSL Server Test.
 
+The recommended use of this image is to create your own Dockerfile which builds upon this one. It should add your own `/etc/nginx/nginx.conf` config file. Example:
+
+```
+FROM bringnow/nginx-letsencrypt
+COPY nginx.conf /etc/nginx/nginx.conf
+```
+
 For using the configuration snippets, you can just include in your `nginx.conf`. A complete example config looks like that:
 
 ```
@@ -41,23 +48,18 @@ http {
 
 ### HTTP Strict Transport Security
 
-**Note**: To achieve an A+ rating (not "only" A), you need to explicetely set the `Strict-Transport-Security` header in each `server` block (see example above). This will enable [[HTTP Strict Transport Security](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security).
+**Note**: To achieve an A+ rating (not "only" A), you need to explicetely set the `Strict-Transport-Security` header in each `server` block (see example above). This will enable [HTTP Strict Transport Security](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security).
 
-The recommended use of this image is to create your own Dockerfile which builds upon this one. It should add the `/etc/nginx/nginx.conf` config file. Example:
+### Volumes
 
-```
-FROM bringnow/nginx-letsencrypt
-COPY nginx.conf /etc/nginx/nginx.conf
-```
-
-### letsencrypt authentication
+#### letsencrypt authentication
 
 For *letsencrypt* (e.g. via [letsencrypt-manager](https://github.com/bringnow/docker-letsencrypt-manager)) to work, you should mount the following directories to the appropriate place of your host:
 
 * `/etc/letsencrypt`: The configuration directory of the letsencrypt client.
 * `/var/acme-webroot`: This is the directory where letsencrypt puts data for [ACME webroot validation](http://letsencrypt.readthedocs.org/en/latest/using.html#webroot).
 
-### DH parameters
+#### DH parameters
 
 In order to achieve an A+ rating one must also use 4096 bit [DH parameters](https://en.wikipedia.org/wiki/Denavit%E2%80%93Hartenberg_parameters). This image helps you by creating these parameters on startup (if not already present). This takes a whole bunch of time! So if this container is running but nginx not responding, check the log if it is still generating those parameters.
 
