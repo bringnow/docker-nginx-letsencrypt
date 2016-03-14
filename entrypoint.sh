@@ -26,7 +26,7 @@ nginx
 
 # Check if config or certificates were changed
 while inotifywait -q -r /etc/nginx /etc/letsencrypt; do
-  log "Will send reload signal to nginx due to config changes in 60 seconds..."
+  log "Configuration changes detected. Will send reload signal to nginx in 60 seconds..."
   sleep 60
   nginx -s reload && log "Reload signal send"
 done
