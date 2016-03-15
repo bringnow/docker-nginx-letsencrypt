@@ -10,14 +10,25 @@ There are currently two snippets available:
 * [`snippets/letsencryptauth.conf`](letsencryptauth.conf): Provide the ACME webroot via HTTP (port 80). Redirect all other traffic to HTTPS pendant.
 * [`snippets/sslconfig.conf`](sslconfig.conf): SSL config directives for enabling an A+ rating on Qualys SSL Server Test.
 
-The recommended use of this image is to create your own Dockerfile which builds upon this one. It should add your own `/etc/nginx/nginx.conf` config file. Example:
+The recommended use of this image is via [docker-compose](https://docs.docker.com/compose/). An example docker-compose.yml looks like that:
 
 ```
-FROM bringnow/nginx-letsencrypt
-COPY nginx.conf /etc/nginx/nginx.conf
+nginx:
+  image: bringnow/nginx-letsencrypt
+  volumes:
+    - ./nginx.conf:/etc/nginx/nginx.conf
+    - /etc/letsencrypt:/etc/letsencrypt
+    - /var/acme-webroot:/var/acme-webroot
+    - /srv/docker/nginx/dhparam:/etc/nginx/dhparam
+  ports:
+    - "80:80"
+    - "443:443"
+  net: "host"
+  dns_search:
+    - "example.com"
 ```
 
-For using the configuration snippets, you can just include in your `nginx.conf`. A complete example config looks like that:
+For using the configuration snippets, you can just include them in your `nginx.conf`. A complete example config looks like that:
 
 ```
 events {
