@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:stable
 
 RUN runtimeDeps='inotify-tools' \
 	&& apt-get update && apt-get install -y $runtimeDeps --no-install-recommends
