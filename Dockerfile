@@ -1,6 +1,6 @@
 FROM nginx:stable-alpine
 
-RUN runtimeDeps='inotify-tools bash' \
+RUN runtimeDeps='inotify-tools bash openssl' \
         && apk update && apk upgrade && apk add $runtimeDeps
 
 COPY letsencryptauth.conf /etc/nginx/snippets/letsencryptauth.conf
