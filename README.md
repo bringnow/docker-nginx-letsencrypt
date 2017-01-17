@@ -14,8 +14,8 @@ nginx docker image based on the [official nginx image](https://hub.docker.com/_/
 
 There are currently two snippets available:
 
-* [`snippets/letsencryptauth.conf`](letsencryptauth.conf): Provide the ACME webroot via HTTP (port 80). Redirect all other traffic to HTTPS pendant.
-* [`snippets/sslconfig.conf`](sslconfig.conf): SSL config directives for enabling an A+ rating on Qualys SSL Server Test.
+* [`snippets/letsencryptauth.conf`](common/letsencryptauth.conf): Provide the ACME webroot via HTTP (port 80). Redirect all other traffic to HTTPS pendant.
+* [`snippets/sslconfig.conf`](common/sslconfig.conf): SSL config directives for enabling an A+ rating on Qualys SSL Server Test.
 
 The recommended use of this image is via [docker-compose](https://docs.docker.com/compose/). An example docker-compose.yml looks like that:
 
