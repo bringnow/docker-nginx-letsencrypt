@@ -3,6 +3,13 @@ nginx docker image based on the [official nginx image](https://hub.docker.com/_/
 
 ![SSL Server Test Rating](./sslservertest.png?raw=true "Qualys SSL Server Test Rating")
 
+## Supported tags and respective Dockerfile links
+
+* `latest` [(Dockerfile)](https://github.com/bringnow/docker-nginx-letsencrypt/blob/master/mainline/jessie/Dockerfile)
+* `alpine` [(Dockerfile)](https://github.com/bringnow/docker-nginx-letsencrypt/blob/master/mainline/alpine/Dockerfile)
+* `stable` [(Dockerfile)](https://github.com/bringnow/docker-nginx-letsencrypt/blob/master/stable/jessie/Dockerfile)
+* `stable-alpine` [(Dockerfile)](https://github.com/bringnow/docker-nginx-letsencrypt/blob/master/stable/alpine/Dockerfile)
+
 ## Usage
 
 There are currently two snippets available:
