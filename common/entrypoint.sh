@@ -25,7 +25,7 @@ fi
 nginx
 
 # Check if config or certificates were changed
-while inotifywait -q -r --exclude '\.git/' -e modify -e create -e delete /etc/nginx /etc/letsencrypt; do
+while inotifywait -q -r --exclude '\.git/' -e modify,create,delete,move,move_self /etc/nginx /etc/letsencrypt; do
   log "Configuration changes detected. Will send reload signal to nginx in 60 seconds..."
   sleep 60
   nginx -s reload && log "Reload signal send"
